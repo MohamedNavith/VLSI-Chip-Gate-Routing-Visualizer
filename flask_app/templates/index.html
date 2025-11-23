@@ -1,25 +1,29 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Chip Routing Grid Selector</title>
+    <title>Chip Routing Interface</title>
 </head>
 <body>
-    <h1>Chip Routing Interface</h1>
-    <img src="{{ url_for('static', filename='graph.jpg') }}" width="700" height="700"><br>
-    <form method="POST">
-        Start Gate:
-        <select name="start">
-            {% for gate in gates %}
-            <option value="{{gate}}">{{gate}}</option>
-            {% endfor %}
-        </select>
-        End Gate:
-        <select name="end">
-            {% for gate in gates %}
-            <option value="{{gate}}">{{gate}}</option>
-            {% endfor %}
-        </select>
-        <button type="submit">Find Path</button>
-    </form>
+<h1>Chip Routing Interface</h1>
+<img src="{{ url_for('static', filename='chip.jpg') }}?v={{ path_hops or 0 }}" width="700" height="700"><br>
+<form method="POST">
+    Start Gate:
+    <select name="start">
+        {% for g in gates %}
+            <option value="{{g}}" {% if start==g %}selected{% endif %}>{{g}}</option>
+        {% endfor %}
+    </select>
+    End Gate:
+    <select name="end">
+        {% for g in gates %}
+            <option value="{{g}}" {% if end==g %}selected{% endif %}>{{g}}</option>
+        {% endfor %}
+    </select>
+    <button type="submit">Find Path</button>
+</form>
+{% if path %}
+    <p>Shortest Path Grid Cells: {{path}}</p>
+    <p>Path Length (hops): {{path_hops}}</p>
+{% endif %}
 </body>
 </html>
