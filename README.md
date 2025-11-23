@@ -1,0 +1,2 @@
+# VLSI Chip Gate Routing Visualizer
+This project provides an interactive tool for visualizing and computing the shortest path (using Dijkstra’s algorithm) between gates on a custom VLSI chip layout. It offers both a Python Streamlit interface for dynamic graph routing and a simple Flask + HTML interface for static grid/graph-based selection. Visualization is done using Plotly, and all routing logic leverages the NetworkX library. Ideal for educational, demo, or simulation use in VLSI/EDA design flows.
